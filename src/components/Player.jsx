@@ -3,7 +3,7 @@ import Frame from "./Frame";
 import PlayState from "./PlayState";
 import Controls from "./Controls";
 import MusicList from "./MusicList";
-import './css/player.css'
+import '../css/Player.css'
 
 const Player = () => {
     return(
