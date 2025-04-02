@@ -9,22 +9,28 @@ import '../css/Player.css'
 const Player = () => {
     const [playlist,setPlaylist] = useState([]);
     const currentIndexRef = useRef(0);
-
+    const audioRef = useRef(null);
+    const [currentSong, setCurrentSong] = useState(playlist[currentIndexRef]);
+    
     
     const handlePlaylistUpdate = (newPlaylist) => {
         setPlaylist(newPlaylist);
     }
-
+    
+    const handlePlaylistSelect = (newIndex) => {
+        currentIndexRef.current = newIndex;
+        setCurrentSong(playlist[newIndex])
+    }
 
 
     return(
-        <>
+        <main className="player">
         <Nav onPlaylistUpdate={handlePlaylistUpdate} />
         <Frame />
-        <PlayState />
+        <PlayState audioRef={audioRef} currentSong={currentSong}  />
         <Controls />
-        <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate} currentIndexRef={currentIndexRef}  />
-        </>
+        <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect} />
+        </main>
     );
 }
 

@@ -11,7 +11,7 @@
     //     display: none;
     //     opacity: 0;
     // }
-    .progress-bar{
+    .play-bar{
         margin: 40px;
         position: relative;
         width:550px;
@@ -23,7 +23,8 @@
         border-radius: 20px;
         overflow-x:visible;
         overflow-y: visible;
-        div{
+        span{
+            display: inline-block;
             position: absolute;
             left: 0%;
             height:20px;

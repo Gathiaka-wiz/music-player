@@ -1,13 +1,8 @@
 import { useEffect } from "react";
 
 import Nav from "./Nav";
-const MusicList = ( { playlist, handlePlaylistUpdate , currentIndexRef } ) => {
-
-    const hand = (event) => {
-        let index = (event.target.id)
-
-        currentIndexRef.current = index;
-    }
+const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect } ) => {
+    
     useEffect(() => {
         let ol = document.getElementById('list');
         playlist.map((list,index) => {
@@ -19,7 +14,11 @@ const MusicList = ( { playlist, handlePlaylistUpdate , currentIndexRef } ) => {
             ol.appendChild(li);
         });
         
-    })
+    },[playlist])
+    const hand = (event) => {
+        let index = (event.target.id)
+        handlePlaylistSelect(index);
+    }
 
     return(
         <section className="Playlist">
