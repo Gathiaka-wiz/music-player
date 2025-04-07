@@ -1,3 +1,4 @@
+// import { addIcon } from "../assets/icons/icons";
 const Nav = ({ onPlaylistUpdate  }) => {
     const collectSongs = (event) => {
         const selectedSongs = Array.from(event.target.files);
@@ -12,6 +13,7 @@ const Nav = ({ onPlaylistUpdate  }) => {
                 webkitdirectory="true"
                 onChange={collectSongs}
                 multiple
+                autoFocus
             />
         </nav>
     )
