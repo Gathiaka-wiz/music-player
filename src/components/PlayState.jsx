@@ -69,25 +69,39 @@ const PlayState = ({ audioRef, currentSong , autoNext }) => {
     }
     
 
-    if (!currentSong) return null;
+    if (currentSong) {
+        return (
+            <section className="play-state">
+                <audio ref={audioRef} src={audioURL}  ></audio>
+                <div className="play-bar" onClick={handleSeek}>
+                    <span className="ball"
+                        style={{ left: `${roundToDecimal((currentTime / duration),5) * 100}%` }}
+                    ></span>
+                </div>
+                
+                <aside>
+                    <span>{formatTime(currentTime)}</span> <wbr />
+                    <span>{formatTime(duration)}</span>
+                </aside>
+                <p>{currentSong.name}</p>
+            </section>
+        );
+    }else{
+        return (
+            <section className="play-state">
+                <div className="play-bar" onClick={handleSeek}>
+                    <span className="ball"></span>
+                </div>
+                
+                <aside>
+                    <span>00:00</span> <wbr />
+                    <span>00:00</span>
+                </aside>
+                <p>No song is selected (please select a  song)</p>
+            </section>
+        );
 
-
-    return (
-        <section className="play-state">
-            <audio ref={audioRef} src={audioURL}  ></audio>
-            <div className="play-bar" onClick={handleSeek}>
-                <span className="ball"
-                    style={{ left: `${roundToDecimal((currentTime / duration),5) * 100}%` }}
-                ></span>
-            </div>
-            
-            <aside>
-                <span>{formatTime(currentTime)}</span> <wbr />
-                <span>{formatTime(duration)}</span>
-            </aside>
-            <p>{currentSong.name}</p>
-        </section>
-    );
+    }
 };
 
 export default PlayState;

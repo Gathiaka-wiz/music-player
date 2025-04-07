@@ -45,7 +45,7 @@ const Player = () => {
     return(
         <main className="player">
         <Nav  onPlaylistUpdate={handlePlaylistUpdate} />
-        <Frame />
+        <Frame currentSong={currentSong} />
         <PlayState audioRef={audioRef} currentSong={currentSong} autoNext={autoNext}  />
         <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
         <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect}  />
