@@ -3,9 +3,9 @@ import { useEffect,  useRef } from "react";
 
 const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
 
-    const volumeRef =  useRef(audioRef.current == null ? 1 : 0 );
+    const volumeRef =  useRef( null );
     audioRef.current !== null ? audioRef.current.volume = volumeRef.current.value : 0;
-    // volumeRef.current !== null ? volumeRef.current.value = 1 : 0;
+    volumeRef.current !== null ? volumeRef.current.value = 1 : 0;
 
 
     const changePlayState = () => {
@@ -40,13 +40,13 @@ const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
                     changePlayState()
                     break;
                 case 'ArrowRight':
-                    changeCurrentSong('next');
+                    audioRef.current.currentTime = (audioRef.current.currentTime + 10.0);
                     break;
                 case 'n':
                     changeCurrentSong('next');
                     break;
                 case 'ArrowLeft':
-                    changeCurrentSong('prev');
+                    audioRef.current.currentTime = (audioRef.current.currentTime - 10.0);
                     break;
                 case 'p':
                     changeCurrentSong('prev');
@@ -78,6 +78,20 @@ const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
         audio.volume = newVol;
         console.log(newVol)
     }
+    const skipSteps = (move) => {
+        if (audioRef.current === null) return ;
+        let current = audioRef.current.currentTime;
+        let audio = audioRef.current
+
+        if(move === 'backward' ) {
+            let seekTime = current  - 10.0;
+            audio.currentTime = seekTime;
+        }else if (move === 'forward') {
+            let seekTime = current  + 10.0;
+            audio.currentTime = seekTime;
+        }
+
+    }
     return(
         <section className="controls">
             <button onClick={() => changeCurrentSong('prev')} > Prev</button>
@@ -90,9 +104,13 @@ const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
                 max="1"
                 step="0.01"
                 ref={volumeRef}
-                value="1"
+                // value={audioRef.current.volume}
                 onChange={changeVolume}
             />
+            <div className="skips" >
+                <button onClick={() => skipSteps('backward')} >backward</button>
+                <button onClick={() => skipSteps('forward')} >forward</button>
+            </div>
         </section>
     );
 }

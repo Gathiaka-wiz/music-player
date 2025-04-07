@@ -22,6 +22,23 @@ const Player = () => {
         currentIndexRef.current = newIndex;
         setCurrentSong(playlist[newIndex])
     }
+
+    // useEffect(() => {
+
+        const autoNext = () => {
+            // if (audioRef.current == null) return;    
+    
+            setCurrentSong(prevIndex => {
+                const nextIndex = (prevIndex + 1) % playlist.length; // loop back to start
+                return nextIndex;
+            });
+        }
+
+    //     // autoNext()
+    //     window.addEventListener('ended',autoNext);
+
+    //     return() => window.removeEventListener('ended',autoNext)
+    // },)
     
 
 
@@ -29,7 +46,7 @@ const Player = () => {
         <main className="player">
         <Nav  onPlaylistUpdate={handlePlaylistUpdate} />
         <Frame />
-        <PlayState audioRef={audioRef} currentSong={currentSong}  />
+        <PlayState audioRef={audioRef} currentSong={currentSong} autoNext={autoNext}  />
         <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
         <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect}  />
         </main>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 
-const PlayState = ({ audioRef, currentSong }) => {
+const PlayState = ({ audioRef, currentSong , autoNext }) => {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
 
@@ -30,11 +30,22 @@ const PlayState = ({ audioRef, currentSong }) => {
         audio.addEventListener('loadedmetadata', updateDuration);
         audio.addEventListener('timeupdate', updateProgressBar);
 
+
+
         return () => {
             audio.removeEventListener('loadedmetadata', updateDuration);
             audio.removeEventListener('timeupdate', updateProgressBar);
         };
     }, );
+        useEffect(() => {
+            const handleEnd = () => {
+                autoNext();
+            }
+    
+            window.addEventListener('ended',handleEnd);
+    
+            // return() => window.removeEventListener('ended',handleEnd)
+        },[autoNext])
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -56,24 +67,10 @@ const PlayState = ({ audioRef, currentSong }) => {
         const places = Math.pow(10,decimalPlace);
         return Math.round(num * places) / places
     }
-    const skipSteps = (move) => {
-        if (audioRef.current === null) return ;
-        let current = currentTime
-        let audio = audioRef.current
-
-        if(move === 'backward' ){
-            let seekTime = current  - 10.0;
-            audio.currentTime = seekTime;
-        }else if (move === 'forward') {
-            let seekTime = current  + 10.0;
-            audio.currentTime = seekTime;
-        }
-
-    }
+    
 
     if (!currentSong) return null;
 
-    
 
     return (
         <section className="play-state">
@@ -83,10 +80,7 @@ const PlayState = ({ audioRef, currentSong }) => {
                     style={{ left: `${roundToDecimal((currentTime / duration),5) * 100}%` }}
                 ></span>
             </div>
-            <div className="skips" >
-                <button onClick={() => skipSteps('backward')} >backward</button>
-                <button onClick={() => skipSteps('forward')} >forward</button>
-            </div>
+            
             <aside>
                 <span>{formatTime(currentTime)}</span> <wbr />
                 <span>{formatTime(duration)}</span>
