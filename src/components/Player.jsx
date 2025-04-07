@@ -5,6 +5,7 @@ import PlayState from "./PlayState";
 import Controls from "./Controls";
 import MusicList from "./MusicList";
 import '../css/Player.css'
+// import { logo,returnIcon,moreIcon } from "../assets/icons/icons";
 
 const Player = () => {
     const [playlist,setPlaylist] = useState([]);
@@ -21,15 +22,16 @@ const Player = () => {
         currentIndexRef.current = newIndex;
         setCurrentSong(playlist[newIndex])
     }
+    
 
 
     return(
         <main className="player">
-        <Nav onPlaylistUpdate={handlePlaylistUpdate} />
+        <Nav  onPlaylistUpdate={handlePlaylistUpdate} />
         <Frame />
         <PlayState audioRef={audioRef} currentSong={currentSong}  />
-        <Controls />
-        <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect} />
+        <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
+        <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect}  />
         </main>
     );
 }
