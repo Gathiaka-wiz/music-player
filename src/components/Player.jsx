@@ -22,12 +22,11 @@ const Player = () => {
     const handlePlaylistUpdate = (newPlaylist) => {
         setPlaylist(newPlaylist);
         displayPlaylist();
-        console.log("start")
     }
     
     const handlePlaylistSelect = (newIndex) => {
         currentIndexRef.current = newIndex;
-        setCurrentSong(playlist[newIndex])
+        setCurrentSong(playlist[newIndex]);
     }
 
 

@@ -200,9 +200,9 @@
                 padding: 5px;
                 max-height: 45px;
                 border-radius: 5px;
+                // overflow: hidden;
                 background: #241b20;
                 width:clamp(80%,80%,90%);
-                // overflow-y: hidden;
                 scrollbar-width: none;
                 font-size: 0.9rem;
                 cursor: pointer;

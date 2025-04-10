@@ -14,7 +14,8 @@ const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect,show
             li.innerHTML = `${list.name}`;
             ol.appendChild(li);
         });
-        
+        handlePlaylistSelect(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[playlist])
     const hand = (event) => {
         let index = (event.target.id)
