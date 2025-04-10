@@ -38,15 +38,15 @@ const PlayState = ({ audioRef, currentSong , autoNext }) => {
             audio.removeEventListener('timeupdate', updateProgressBar);
         };
     }, );
-        useEffect(() => {
-            const handleEnd = () => {
-                autoNext();
-            }
+        // useEffect(() => {
+        //     const handleEnd = () => {
+        //         autoNext();
+        //     }
     
-            window.addEventListener('ended',handleEnd);
+        //     window.addEventListener('ended',handleEnd);
     
-            // return() => window.removeEventListener('ended',handleEnd)
-        },[autoNext])
+        //     // return() => window.removeEventListener('ended',handleEnd)
+        // },[autoNext])
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -75,7 +75,8 @@ const PlayState = ({ audioRef, currentSong , autoNext }) => {
             <section className="play-state">
                 <audio 
                     ref={audioRef} 
-                    src={audioURL}  
+                    src={audioURL}
+                    onEnded={autoNext}  
                 >
                 </audio>
                 <p>{currentSong.name}</p>

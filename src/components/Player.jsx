@@ -13,10 +13,16 @@ const Player = () => {
     const [currentSong, setCurrentSong] = useState(playlist[currentIndexRef]);
     const [showPlaylist, setShowPlaylist] = useState(false);
 
+
+    const displayPlaylist = ()  => {
+        setShowPlaylist((prev) => !prev);
+    }
     
     
     const handlePlaylistUpdate = (newPlaylist) => {
         setPlaylist(newPlaylist);
+        displayPlaylist();
+        console.log("start")
     }
     
     const handlePlaylistSelect = (newIndex) => {
@@ -26,18 +32,11 @@ const Player = () => {
 
 
         const autoNext = () => {
-    
-            setCurrentSong(prevIndex => {
-                const nextIndex = (prevIndex + 1) % playlist.length; // loop back to start
-                return nextIndex;
-            });
+            let length = playlist.length
+            currentIndexRef.current == length ? setCurrentSong(playlist[currentIndexRef.current = 0]) : setCurrentSong(playlist[currentIndexRef.current ++ ]);
+            // alert("done");
         }
 
-    const displayPlaylist = ()  => {
-        setShowPlaylist((prev) => !prev);
-        console.log(showPlaylist);
-        
-    }
 
 
 
