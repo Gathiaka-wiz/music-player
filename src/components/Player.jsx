@@ -4,14 +4,15 @@ import Frame from "./Frame";
 import PlayState from "./PlayState";
 import Controls from "./Controls";
 import MusicList from "./MusicList";
-import '../css/Player.css'
-// import { logo,returnIcon,moreIcon } from "../assets/icons/icons";
+import '../css/Player.css';
 
 const Player = () => {
     const [playlist,setPlaylist] = useState([]);
     const currentIndexRef = useRef(0);
     const audioRef = useRef(null);
     const [currentSong, setCurrentSong] = useState(playlist[currentIndexRef]);
+    const [showPlaylist, setShowPlaylist] = useState(false);
+
     
     
     const handlePlaylistUpdate = (newPlaylist) => {
@@ -23,10 +24,8 @@ const Player = () => {
         setCurrentSong(playlist[newIndex])
     }
 
-    // useEffect(() => {
 
         const autoNext = () => {
-            // if (audioRef.current == null) return;    
     
             setCurrentSong(prevIndex => {
                 const nextIndex = (prevIndex + 1) % playlist.length; // loop back to start
@@ -34,21 +33,27 @@ const Player = () => {
             });
         }
 
-    //     // autoNext()
-    //     window.addEventListener('ended',autoNext);
+    const displayPlaylist = ()  => {
+        setShowPlaylist((prev) => !prev);
+        console.log(showPlaylist);
+        
+    }
 
-    //     return() => window.removeEventListener('ended',autoNext)
-    // },)
-    
 
 
     return(
         <main className="player">
-        <Nav  onPlaylistUpdate={handlePlaylistUpdate} />
-        <Frame currentSong={currentSong} />
-        <PlayState audioRef={audioRef} currentSong={currentSong} autoNext={autoNext}  />
-        <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
-        <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate}  handlePlaylistSelect={handlePlaylistSelect}  />
+            <Nav  onPlaylistUpdate={handlePlaylistUpdate} displayPlaylist={displayPlaylist}  />
+            
+            <Frame currentSong={currentSong} />
+            
+            <div className="all-controls" >
+                <PlayState audioRef={audioRef} currentSong={currentSong} autoNext={autoNext}  />
+            
+                <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
+            </div>
+            
+            <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate} showPlaylist={showPlaylist}  handlePlaylistSelect={handlePlaylistSelect} displayPlaylist={displayPlaylist} setShowPlaylist={setShowPlaylist} />
         </main>
     );
 }

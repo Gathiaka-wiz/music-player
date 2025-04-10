@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { returnIcon  } from "../assets/icons/icons";
 
 import Nav from "./Nav";
-const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect } ) => {
+const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect,showPlaylist ,displayPlaylist,setShowPlaylist} ) => {
     
     useEffect(() => {
         let ol = document.getElementById('list');
@@ -18,13 +19,14 @@ const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect } ) 
     const hand = (event) => {
         let index = (event.target.id)
         handlePlaylistSelect(index);
+        setShowPlaylist(false)
     }
 
     return(
-        <section className="Playlist">
+        <section className={`playlist ${showPlaylist ? "slide-in" : "slide-out"}`}>
+            <Nav onPlaylistUpdate={handlePlaylistUpdate}  returnIcon={returnIcon} displayPlaylist={displayPlaylist}/>
             <ol id="list" onClick={hand} >
             </ol>
-            <Nav onPlaylistUpdate={handlePlaylistUpdate} />
         </section>
     );
 }

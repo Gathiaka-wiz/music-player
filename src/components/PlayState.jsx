@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { playBar, playState } from "../assets/icons/icons";
 
 const PlayState = ({ audioRef, currentSong , autoNext }) => {
     const [duration, setDuration] = useState(0);
@@ -72,32 +73,53 @@ const PlayState = ({ audioRef, currentSong , autoNext }) => {
     if (currentSong) {
         return (
             <section className="play-state">
-                <audio ref={audioRef} src={audioURL}  ></audio>
-                <div className="play-bar" onClick={handleSeek}>
-                    <span className="ball"
-                        style={{ left: `${roundToDecimal((currentTime / duration),5) * 100}%` }}
-                    ></span>
+                <audio 
+                    ref={audioRef} 
+                    src={audioURL}  
+                >
+                </audio>
+                <p>{currentSong.name}</p>
+                <div className="timeline" onClick={handleSeek}>
+                    <img 
+                        src={playBar} 
+                        alt="playBar" 
+                        className="play-bar" 
+                        />
+                    <img 
+                        className="ball" 
+                        src={playState} 
+                        alt="play-bar-ball" 
+                        style={{ left: `${(roundToDecimal((currentTime / duration),5) * 100) == 100 ? 99 : (roundToDecimal((currentTime / duration),5) * 100)}%` }} 
+                    />
                 </div>
                 
                 <aside>
-                    <span>{formatTime(currentTime)}</span> <wbr />
+                    <span>{formatTime(currentTime)}</span>
                     <span>{formatTime(duration)}</span>
                 </aside>
-                <p>{currentSong.name}</p>
             </section>
         );
     }else{
         return (
             <section className="play-state">
-                <div className="play-bar" onClick={handleSeek}>
-                    <span className="ball"></span>
+                {/* <p>Tom-Macdonald-man-in-the-sky-720p-official-video.mp3</p> */}
+                <p>No song is selected (please select a  song)</p>
+                <div className="timeline" onClick={handleSeek}>
+                    <img 
+                        src={playBar} 
+                        alt="playBar" 
+                        className="play-bar" 
+                    />
+                    <img 
+                        className="ball" 
+                        src={playState} 
+                        alt="play-bar-ball" 
+                    />
                 </div>
-                
                 <aside>
-                    <span>00:00</span> <wbr />
+                    <span>00:00</span> 
                     <span>00:00</span>
                 </aside>
-                <p>No song is selected (please select a  song)</p>
             </section>
         );
 

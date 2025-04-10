@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from "react";
 
 const Frame = ( { currentSong } ) => {
@@ -22,7 +23,7 @@ const Frame = ( { currentSong } ) => {
                     currentFrameIndexRef.current === length-1 ? currentFrameIndexRef.current = 0 : currentFrameIndexRef.current ++ ;
                 },[currentSong])
             }
-            <img src={frames[currentFrameIndexRef.current]} alt="frame" style={{width:'450px', height:'400px'}} />
+            <img src={frames[currentFrameIndexRef.current]} alt="frame" />
         </section>
     )
 }

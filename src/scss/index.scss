@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color:white;
+    font-family: Inter-regular;
+}
+button{
+    border: none;
+}
+@font-face {
+    font-family: Inter-regular;
+    src: url('../assets/fonts/Inter-Regular.otf');
+}
+@font-face {
+    font-family: Inter-medium;
+    src: url('../assets/fonts/Inter-Medium.woff')
+}
