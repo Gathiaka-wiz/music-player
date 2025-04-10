@@ -1,7 +1,7 @@
 import { useEffect,  useRef, useState } from "react";
 import { playIcon,pauseIcon,nextIcon,prevIcon } from "../assets/icons/icons";
 
-const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
+const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong,displayPlaylist }) => {
 
     const volumeRef =  useRef( null );
     // audioRef.current !== null ? audioRef.current.volume = volumeRef.current.value : 0;
@@ -89,6 +89,9 @@ const Controls = ({ audioRef, playlist, currentIndexRef, setCurrentSong }) => {
                 case 'm':
                     audioRef.current.volume == 0 ? audioRef.current.volume = 0.5 : audioRef.current.volume = 0;
                     // volumeRef.current.value == 0 ? volumeRef.current.value = 0.05 : volumeRef.current.value = 0;
+                    break;
+                case 'l':
+                    displayPlaylist()
                     break;
             }
         }

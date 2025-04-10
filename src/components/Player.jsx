@@ -17,24 +17,18 @@ const Player = () => {
     const displayPlaylist = ()  => {
         setShowPlaylist((prev) => !prev);
     }
-    
-    
     const handlePlaylistUpdate = (newPlaylist) => {
         setPlaylist(newPlaylist);
         displayPlaylist();
     }
-    
     const handlePlaylistSelect = (newIndex) => {
         currentIndexRef.current = newIndex;
         setCurrentSong(playlist[newIndex]);
     }
-
-
-        const autoNext = () => {
-            let length = playlist.length
-            currentIndexRef.current == length ? setCurrentSong(playlist[currentIndexRef.current = 0]) : setCurrentSong(playlist[currentIndexRef.current ++ ]);
-            // alert("done");
-        }
+    const autoNext = () => {
+        let length = playlist.length
+        currentIndexRef.current == length ? setCurrentSong(playlist[currentIndexRef.current = 0]) : setCurrentSong(playlist[currentIndexRef.current ++ ]);
+    }
 
 
 
@@ -48,7 +42,7 @@ const Player = () => {
             <div className="all-controls" >
                 <PlayState audioRef={audioRef} currentSong={currentSong} autoNext={autoNext}  />
             
-                <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} />
+                <Controls audioRef={audioRef} playlist={playlist} currentIndexRef={currentIndexRef} setCurrentSong={setCurrentSong} displayPlaylist={displayPlaylist} />
             </div>
             
             <MusicList playlist={playlist} handlePlaylistUpdate={handlePlaylistUpdate} showPlaylist={showPlaylist}  handlePlaylistSelect={handlePlaylistSelect} displayPlaylist={displayPlaylist} setShowPlaylist={setShowPlaylist} />

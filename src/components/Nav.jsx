@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { addIconBg,moreIcon } from "../assets/icons/icons";
 const Nav = ({ onPlaylistUpdate,displayPlaylist ,returnIcon  }) => {
     const collectSongs = (event) => {
@@ -10,6 +11,17 @@ const Nav = ({ onPlaylistUpdate,displayPlaylist ,returnIcon  }) => {
 
         input.click();
     }
+
+    useEffect(() => {
+        const keyDown = (event) => {
+            if(event.key === '+'){
+                simulateAdd()
+            }
+        }
+        window.addEventListener('keydown',keyDown);
+
+        return () => window.removeEventListener('keydown',keyDown) ;
+    })
 
     if(returnIcon === undefined){
         return(

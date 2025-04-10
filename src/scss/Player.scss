@@ -187,22 +187,24 @@
             // flex-direction: column;
             justify-content: center;
             align-items : center; 
-            text-align: center;
+            // text-align: center;
             height: 90%;
             width: 100%;
             overflow: auto;
             scrollbar-width: none;
             padding-bottom: 25px;
+            // margin: auto;
             li{
+                margin: 0 auto;
                 text-align: center;
                 list-style-type: none;
-                margin: auto;
                 padding: 5px;
                 max-height: 45px;
                 border-radius: 5px;
                 // overflow: hidden;
                 background: #241b20;
                 width:clamp(80%,80%,90%);
+                // width:700px;
                 scrollbar-width: none;
                 font-size: 0.9rem;
                 cursor: pointer;
