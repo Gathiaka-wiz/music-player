@@ -1,0 +1,175 @@
+@media  screen and (min-width:1025px) {
+    .player{
+        width:55vw ;
+        .frame{
+            width: 50vw;
+            margin-top:max(-35px,-10vh);
+            img{
+                width: 50vw;
+            }
+        }
+        .all-controls{
+            width: 52vw;
+            height: 24vh;
+            .play-state{
+                .timeline{
+                    width: 50vw;
+                }
+            }
+            
+        }
+        .playlist{
+            &.slide-in{
+                width: 55vw;
+            }
+            ol{
+                // justify-content:center;
+                width: 100%;
+                li{
+                    width:clamp(80%,80%,90%);
+                }
+            }
+        }
+    }
+}
+// @media  screen and (min-width:768px) {
+//     .player{
+//         .all-controls{
+//             height:17vh;
+//             background-color: green;
+//         }
+//     }
+// }
+@media  screen and (max-width:480px) {
+    .player{
+        height: 92dvh;
+        .frame{
+            img{
+                height: 60vh;
+            }
+        }
+    }
+}
+@media  screen and (max-width:428px) {
+    .player{
+        .frame{
+            img{
+                height: 50vh;
+            }
+        }
+        .all-controls{
+            .play-state{
+                .timeline{
+                    width: 80vw;
+                    .play-bar{
+                        width: 80vw;
+                    }
+                }
+            }
+        }
+    }
+}
+// @media  screen and (max-width:412px) {
+//     .player{
+//         .frame{
+//             img{
+//                 height: 50vh;
+//             }
+//         }
+//         .all-controls{
+//             height:22vh;
+//         }
+//     }
+// }
+@media  screen and (max-width:412px) {
+    .player{
+        .nav-elements{
+            img{
+                width: 32px;
+                height: 32px;
+            }
+        }
+        .frame{
+            margin-top: min(-40px, -15vh);
+            img{
+                width: 90vw;
+            }
+        }
+        .all-controls{
+            width:90vw;
+            .play-state{
+                p{
+                    font-size: 0.8em;
+                }
+                .timeline{
+                    width: 86vw;
+                    .play-bar{
+                        width: 86vw;
+                    }
+                }
+            }
+            .controls{
+                .play-pause{
+                    width: 85px;
+                    height: 80px;
+                }
+            }
+        }
+        .playlist{
+            ol{
+                li{
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+@media  screen and (max-width:360px) {
+    .player{
+        .playlist{
+            ol{
+                li{
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+@media  screen and (max-width:320px) {
+    .player{
+        .nav-elements{
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        } 
+        .frame{
+            margin-top: min(-40px, -6vh);
+        }
+        .all-controls{
+            height: 28vh;
+            border-radius: 15px;
+            .play-state{
+                .timeline{
+                    height: 9px;
+                    .play-bar{
+                        height: 9px;
+                    }
+                    .ball{
+                        height: 20px;
+                    }
+                }
+            }
+            .controls{
+                img{
+                    width: 45px;
+                    height: 45px;
+                }
+                .play-pause {
+                    width: 55px;
+                    height: 55px;
+                }
+            } 
+        }
+    }
+}
