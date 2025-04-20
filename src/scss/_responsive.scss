@@ -1,6 +1,7 @@
 @media  screen and (min-width:1025px) {
     .player{
         width:55vw ;
+        margin-top: 1%;
         .frame{
             width: 50vw;
             margin-top:max(-35px,-10vh);
@@ -69,18 +70,18 @@
         }
     }
 }
-// @media  screen and (max-width:412px) {
-//     .player{
-//         .frame{
-//             img{
-//                 height: 50vh;
-//             }
-//         }
-//         .all-controls{
-//             height:22vh;
-//         }
-//     }
-// }
+@media  screen and (max-width:414px) {
+    .player{
+        .frame{
+            img{
+                height: 50vh;
+            }
+        }
+        .all-controls{
+            height:22vh;
+        }
+    }
+}
 @media  screen and (max-width:412px) {
     .player{
         .nav-elements{

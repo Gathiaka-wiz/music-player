@@ -24,44 +24,10 @@ const MusicList = ( { playlist, handlePlaylistUpdate , handlePlaylistSelect,show
     }
 
     return(
-        <section className={`playlist ${showPlaylist ? "slide-in" : "slide-out"}`}>
+        <section className={`playlist  ${showPlaylist ? "slide-in" : "slide-out"}`}>
             <Nav onPlaylistUpdate={handlePlaylistUpdate}  returnIcon={returnIcon} displayPlaylist={displayPlaylist}/>
             <ol id="list" onClick={hand} >
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
-                <li>Tom macdonald fake woke fuck americans and them</li>
+                
             </ol>
         </section>
     );
